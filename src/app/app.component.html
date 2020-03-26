@@ -1,0 +1,10 @@
+<nav>
+  <a routerLink="/" routerLinkActive="true" [routerLinkActiveOptions]="{exact:true}">Home</a>
+  <a routerLink="/articles" routerLinkActive="true" >Articles</a>
+  <a routerLink="/login" routerLinkActive="true" >Login</a>
+  <a routerLink="/admin" routerLinkActive="active">Admin</a>
+  <span *ngIf="isLogin()">
+  <a href="#" (click)="logout()" routerLinkActive="active">Logout</a>
+    </span>
+</nav>
+<router-outlet></router-outlet>
