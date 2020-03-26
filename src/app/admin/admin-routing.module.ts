@@ -4,6 +4,7 @@ import {AdminComponent} from './admin/admin.component';
 import {AuthGuard} from '../auth/auth.guard';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {ArticlesComponent} from './articles/articles.component';
+import {ArticleComponent} from './article/article.component';
 
 
 const routes: Routes = [
@@ -14,11 +15,27 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       {
-        path: 'admin/dashboard',
+        path: 'dashboard',
         component: DashboardComponent
       },
       {
-        path: 'admin/articles',
+        path: 'articles',
+        component: ArticlesComponent
+      },
+      {
+        path: 'articles/delete/:id',
+        component: ArticlesComponent
+      },
+      {
+        path: 'articles/add',
+        component: ArticleComponent
+      },
+      {
+        path: 'articles/edit/:id',
+        component: ArticlesComponent
+      },
+      {
+        path: 'articles/update/:id',
         component: ArticlesComponent
       }
     ]

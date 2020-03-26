@@ -9,12 +9,16 @@ import {Article} from '../model/article';
 })
 export class ArticlesComponent implements OnInit {
 
-  articleList: Article[] = [];
+  articleList: any[] = [];
 
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
-    this.postService.getPostList().subscribe( data => this.articleList = data);
+  console.log( this.postService.getPostList()
+      .subscribe( data => {
+        this.articleList = data;
+      }));
   }
+
 
 }
