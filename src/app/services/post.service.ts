@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {catchError, retry} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {Article} from '../model/article';
-import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ import {Router} from '@angular/router';
 export class PostService {
   baseUrl = 'http://localhost:3000/';
 
-  constructor(private http: HttpClient, private route: Router) { }
+  constructor(private http: HttpClient) { }
 
   getPostList() {
     const url = this.baseUrl + 'articles';
@@ -32,7 +31,25 @@ export class PostService {
 
   addPost(data) {
     const url = this.baseUrl + 'articles';
-    this.http.post(url, data);
-    this.route.navigate(['//admin/articles']);
+    return this.http.post(url, data).pipe(
+        catchError(error => of(error.message)),
+        retry(3)
+    );
+  }
+
+  deletePost(id: string) {
+    const url = this.baseUrl + 'articles/' + id;
+    return this.http.delete<Article>(url).pipe(
+        catchError(error => of(error.message)),
+        retry(3)
+    );
+  }
+
+  updatePost(data, id) {
+    const url = this.baseUrl + 'articles/' + id;
+    return this.http.patch(url, data).pipe(
+        catchError(error => of(error.message)),
+        retry(3)
+    );
   }
 }

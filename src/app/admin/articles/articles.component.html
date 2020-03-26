@@ -8,4 +8,5 @@
         {{article.body}}
     </div>
     <button (click)="delete(article.id) ">Delete</button>
+    <button [routerLink]="['edit/', article.id]">Edit</button>
 </div>
