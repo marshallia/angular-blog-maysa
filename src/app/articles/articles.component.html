@@ -1,10 +1,17 @@
 <p>articles works!</p>
-<div *ngFor="let article of articleList">
+<label for="filter">Sort By</label>
+<select id="filter" [(ngModel)]="filter">
+  <option value="id">Id</option>
+  <option value="title">Title</option>
+  <option value="body">Body</option>
+  <option value="userId">Creator</option>
+</select>
+<div *ngFor="let article of articleList| paginate:{itemsPerPage: 5, currentPage:p}">
   <h3>
     <a  [routerLink]="['/article/', article.id]">{{article.title}}</a>
   </h3>
   <div>
     {{article.body}}
   </div>
-
 </div>
+<pagination-controls (pageChange)="p=$event"></pagination-controls>

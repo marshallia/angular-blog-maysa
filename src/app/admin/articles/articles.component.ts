@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class ArticlesComponent implements OnInit {
   articleList: Article[] = [];
+  p = 1;
 
   constructor(private postService: PostService, private route: Router) { }
 

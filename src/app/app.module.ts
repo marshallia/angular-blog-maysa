@@ -10,6 +10,7 @@ import { SingleArticleComponent } from './single-article/single-article.componen
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {AdminModule} from './admin/admin.module';
     HttpClientModule,
     FormsModule,
     AdminModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

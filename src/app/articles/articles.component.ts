@@ -8,7 +8,8 @@ import {Article} from '../model/article';
   styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
-
+  p = 1;
+  filter: string;
   articleList: any[] = [];
 
   constructor(private postService: PostService) { }

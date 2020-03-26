@@ -1,6 +1,6 @@
 <p>articles works!</p>
 <button routerLink="add">Add Article</button>
-<div *ngFor="let article of articleList">
+<div *ngFor="let article of articleList| paginate:{itemsPerPage: 5, currentPage:p}">
     <h3>
         {{article.title}}
     </h3>
@@ -10,3 +10,4 @@
     <button (click)="delete(article.id) ">Delete</button>
     <button [routerLink]="['edit/', article.id]">Edit</button>
 </div>
+<pagination-controls (pageChange)="p=$event"></pagination-controls>

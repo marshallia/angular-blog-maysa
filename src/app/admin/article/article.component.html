@@ -1,0 +1,13 @@
+<div>
+    <input type="hidden" value="{{id}}">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" [(ngModel)]="title">
+    </div>
+    <div class="form-group">
+        <label for="body">body</label>
+        <textarea type="text" id="body" [(ngModel)]="body"></textarea>
+    </div>
+    <button *ngIf="id===null" class="btn-primary" (click)="addPost()">Submit</button>
+    <button *ngIf="id!=null" class="btn-primary" (click)="update()">Update</button>
+</div>
